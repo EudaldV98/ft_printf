@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 20:19:48 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/21 21:29:48 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/22 15:43:29 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 void	ft_start_specifier(char sp, va_list arg)
 {
-	unsigned int	i;
+	int				i;
 	char			*s;
 
 	if (sp == 'c')
@@ -32,7 +32,7 @@ void	ft_start_specifier(char sp, va_list arg)
 		ft_putstr_fd(s, 1);
 		return ;
 	}
-	else if (sp == 'd' || sp == 'i')
+	else if (sp == 'd' || sp == 'i')0
 	{
 		i = va_arg(arg, int);
 		ft_putnbr_fd(i, 1);
@@ -74,7 +74,7 @@ int		main(int argc, const char *argv[])
 	char c = 'A';
 	char *s = "World";
 	int i = 2123;
-	
+
 	ft_printf("Hello!! %i %c %s ", i, c, s);
 	return (0);
 }
