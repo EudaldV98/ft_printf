@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 20:19:48 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/23 18:45:08 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/23 19:34:41 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_struct	ft_start_specifier(va_list arg, const char *format, t_struct ret)
 		ret = ft_specifier_s(arg, ret);
 	else if (format[ret.i + 1] == 'd' || format[ret.i + 1] == 'i')
 		ret = ft_spcifier_d(arg, ret);
+	else if (format[ret.i + 1] == '')
 	if (ret.str != NULL)
 		ret.i++;
 	ret = ft_print_args(ret);
@@ -107,6 +108,6 @@ int		main(int argc, const char *argv[])
 	int i = 2123;
 
 	//printf("Hello!! %-5d %c %s \n", i, 65, s);
-	ft_printf("Hello!! %c", c);
+	ft_printf("Hello!! %c %i %s ", c, i, s);
 	return (0);
 }
