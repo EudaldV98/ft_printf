@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 11:33:29 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/23 18:05:50 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/10/22 17:44:36 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/10/23 17:55:23 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef	FT_PRINTF_H
+# define	FT_PRINTF_H
 
-size_t	ft_strlen(const char *str)
+# include <stdlib.h>
+# include <stdarg.h>
+# include <unistd.h>
+
+typedef struct	s_struct
 {
-	size_t count;
+	int		i;
+	int		len;
+	int		space;
+	int 	zero;
+	char	*str;
+}				t_struct;
+int		ft_printf(const char *format, ...);
 
-	if (!str)
-		return (0);
-	count = 0;
-	while (str[count])
-	{
-		count++;
-	}
-	return (count);
-}
+t_struct	ft_specifier_c(va_list arg, t_struct ret);
+t_struct	ft_spcifier_d(va_list arg, t_struct ret);
+t_struct	ft_specifier_s(va_list arg, t_struct ret);
+#endif

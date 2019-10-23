@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_specifier_c.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 11:33:29 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/23 18:05:50 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/10/22 16:14:43 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/10/23 18:45:14 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
+#include <stdarg.h>
+#include "libft/libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+t_struct	ft_specifier_c(va_list arg, t_struct ret)
 {
-	size_t count;
+	unsigned char	c;
 
-	if (!str)
-		return (0);
-	count = 0;
-	while (str[count])
+	c = va_arg(arg, int);
+	if ((ret.str = malloc(sizeof(char) * 2)))
 	{
-		count++;
+		ret.str[0] = c;
+		ret.str[1] = '\0';
+		return (ret);
 	}
-	return (count);
+	ret.str = NULL;
+	return (ret);
 }

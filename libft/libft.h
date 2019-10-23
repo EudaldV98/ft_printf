@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 20:09:59 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/17 11:14:33 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/22 17:43:57 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+#include <stdarg.h>
 
 typedef struct	s_list
 {

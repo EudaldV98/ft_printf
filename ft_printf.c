@@ -6,67 +6,98 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 20:19:48 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/22 15:43:29 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/23 18:45:08 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdarg.h>
 #include "libft/libft.h"
+#include <stdio.h>
+#include <stdarg.h>
+#include "ft_printf.h"
 
-
-void	ft_start_specifier(char sp, va_list arg)
+t_struct	ft_print_args(t_struct ret)
 {
-	int				i;
-	char			*s;
+	/*int sign;
 
-	if (sp == 'c')
+	if ((ret.zero -= ft_strlen(ret.str)) < 0)
+		ret.zero = 0;
+	sign = (ret.space > 0) ? 1 : -1;
+	ret.space = (sign == -1) ? -ret.space : ret.space;
+	ret.space = ret.space - ft_strlen(ret.str) - ret.zero;
+	ret.space = (ret.space > 0) ? ret.space : 0;
+	ret.space = (ret.str[0] == '-' && ret.space > 0) ?
+				ret.space - 1 : ret.space;
+	ret.space = (ret.str[0] == '-' && ret.space < 0) ?
+				ret.space + 1 : ret.space;*/
+	ret.len = ret.len + ft_strlen(ret.str) + ret.space + ret.zero;
+	//ret = ft_print_flag(ret, sign);
+	ft_putstr_fd(ret.str, 1);
+	//ret = ft_print_flag(ret, sign);
+	ret.zero = 0;
+	ret.space = 0;
+	return (ret);
+}
+
+t_struct	ft_start_specifier(va_list arg, const char *format, t_struct ret)
+{
+	//ret = ft_flags(arg, ret, format[ret.i + 1], format);
+	if (format[ret.i + 1] == 'c')
+		ret = ft_specifier_c(arg, ret);
+	else if (format[ret.i + 1] == 's')
+		ret = ft_specifier_s(arg, ret);
+	else if (format[ret.i + 1] == 'd' || format[ret.i + 1] == 'i')
+		ret = ft_spcifier_d(arg, ret);
+	if (ret.str != NULL)
+		ret.i++;
+	ret = ft_print_args(ret);
+	ret.str = NULL;
+	return (ret);
+}
+
+t_struct	ft_init_struct(t_struct new, int n)
+{
+	if (n != 1)
 	{
-		i = va_arg(arg, int);
-		ft_putchar_fd(i, 1);
-		return ;
+		new.i = 0;
+		new.len = 0;
+		new.str = NULL;
 	}
-	else if (sp == 's')
-	{
-		s = va_arg(arg, char *);
-		ft_putstr_fd(s, 1);
-		return ;
-	}
-	else if (sp == 'd' || sp == 'i')0
-	{
-		i = va_arg(arg, int);
-		ft_putnbr_fd(i, 1);
-		return ;
-	}
+	new.space = 0;
+	new.zero = 0;
+	return (new);
 }
 
 int		ft_printf(const char *format, ...)
 {
-	char			*tmp;
-	unsigned int	i;
-	va_list			arg;
+	va_list		arg;
+	t_struct	ret;
+	int			len;
+	int			j;
 
+	ret.str = NULL;
 	va_start(arg, format);
-	i = 0;
-	tmp = (char *)format;
-	if (!tmp)
-		return (0);
-	while (tmp[i])
+	ret = ft_init_struct(ret, 0);
+	len = ft_strlen(format);
+	while (ret.i < len)
 	{
-		while (tmp[i] != '%' && tmp[i])
+		ret = ft_init_struct(ret, 1);
+		j = ret.i;
+		if (format[ret.i] == '%')
 		{
-			ft_putchar_fd(tmp[i], 1);
-			i++;
+			ret = ft_start_specifier(arg, format, ret);
+			if (ret.i == j)
+				ft_putchar_fd('%', 1);
 		}
-		if (tmp[i] == '%')
+		else
 		{
-			ft_start_specifier(tmp[i + 1], arg);
-			i++;
+			ft_putchar_fd(format[ret.i], 1);
+			ret.len++;
 		}
-		i++;
+		ret.i++;
 	}
+	free(ret.str);
 	va_end(arg);
-	return (1);
+	return (ret.len);
 }
 
 int		main(int argc, const char *argv[])
@@ -75,6 +106,7 @@ int		main(int argc, const char *argv[])
 	char *s = "World";
 	int i = 2123;
 
-	ft_printf("Hello!! %i %c %s ", i, c, s);
+	//printf("Hello!! %-5d %c %s \n", i, 65, s);
+	ft_printf("Hello!! %c", c);
 	return (0);
 }

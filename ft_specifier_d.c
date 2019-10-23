@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_specifier_d.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 11:33:29 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/23 18:05:50 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/10/22 16:22:20 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/10/23 17:55:58 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
+#include <stdarg.h>
+#include "libft/libft.h"
+#include "ft_printf.h"
 
-size_t	ft_strlen(const char *str)
+t_struct	ft_spcifier_d(va_list arg, t_struct ret)
 {
-	size_t count;
+	int		i;
 
-	if (!str)
-		return (0);
-	count = 0;
-	while (str[count])
-	{
-		count++;
-	}
-	return (count);
+	i = va_arg(arg, int);
+	ret.str = ft_itoa((int)i);
+	return (ret);
 }
