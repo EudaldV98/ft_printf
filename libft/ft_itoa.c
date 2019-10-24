@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 20:48:35 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/10 21:00:38 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/24 21:23:23 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int			get_size(unsigned int num)
 	return (size + 1);
 }
 
-char				*ft_itoa(int n)
+char				*ft_itoa(long n)
 {
 	char			*res;
 	int				size;

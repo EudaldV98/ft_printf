@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_specifier_d.c                                   :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 16:22:20 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/24 21:34:15 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/10/24 18:49:43 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/10/24 21:59:05 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-t_struct	ft_spcifier_d(va_list arg, t_struct ret)
+int		ft_strlen_nb(long nb, int base)
 {
-	int		i;
+	int	len;
 
-	i = va_arg(arg, int);
-	ret.str = ft_itoa((int)i);
-	return (ret);
+	if (nb == 0)
+		return (1);
+	len = 0;
+	if (nb < 0)
+		len = 1;
+	if (nb < 0)
+		nb *= -1;
+	while (nb >= 1)
+	{
+		nb /= base;
+		len++;
+	}
+	return (len);
 }

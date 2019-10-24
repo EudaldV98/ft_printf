@@ -6,12 +6,10 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 16:07:22 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/23 17:55:35 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/24 21:34:09 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdarg.h>
 #include "libft/libft.h"
 #include "ft_printf.h"
 

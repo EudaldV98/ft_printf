@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 20:09:59 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/22 17:43:57 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/24 21:23:42 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_list			*ft_lstmap(t_list *lst, void *(*f)(void *));
 void			ft_lstdelone(t_list *lst, void (*del)(void*));
 void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
-char			*ft_itoa(int n);
+char			*ft_itoa(long n);
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_strtrim(const char *s1, const char *set);
 char			**ft_split(const char *s, char c);

@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 20:19:48 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/23 19:34:41 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/24 22:07:27 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,11 @@ t_struct	ft_start_specifier(va_list arg, const char *format, t_struct ret)
 		ret = ft_specifier_s(arg, ret);
 	else if (format[ret.i + 1] == 'd' || format[ret.i + 1] == 'i')
 		ret = ft_spcifier_d(arg, ret);
-	else if (format[ret.i + 1] == '')
+	else if (format[ret.i + 1] == 'u')
+		ret = ft_specifier_u(arg, ret);
+	else if (format[ret.i + 1] == 'x' || format[ret.i + 1] == 'X' ||
+										format[ret.i + 1] == 'p')
+		ret = ft_specifier_hex(arg, ret, format[ret.i + 1]);
 	if (ret.str != NULL)
 		ret.i++;
 	ret = ft_print_args(ret);
@@ -106,8 +110,9 @@ int		main(int argc, const char *argv[])
 	char c = 'A';
 	char *s = "World";
 	int i = 2123;
-
-	//printf("Hello!! %-5d %c %s \n", i, 65, s);
-	ft_printf("Hello!! %c %i %s ", c, i, s);
+	unsigned int u = 2345;
+	
+	printf("Hello!! %p\n", u);
+	ft_printf("Hello!! %p",u);
 	return (0);
 }
