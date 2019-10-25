@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 20:19:48 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/24 22:07:27 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/25 19:27:38 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 t_struct	ft_print_args(t_struct ret)
 {
-	/*int sign;
+	int sign;
 
 	if ((ret.zero -= ft_strlen(ret.str)) < 0)
 		ret.zero = 0;
@@ -28,11 +28,11 @@ t_struct	ft_print_args(t_struct ret)
 	ret.space = (ret.str[0] == '-' && ret.space > 0) ?
 				ret.space - 1 : ret.space;
 	ret.space = (ret.str[0] == '-' && ret.space < 0) ?
-				ret.space + 1 : ret.space;*/
+				ret.space + 1 : ret.space;
 	ret.len = ret.len + ft_strlen(ret.str) + ret.space + ret.zero;
-	//ret = ft_print_flag(ret, sign);
+	ret = ft_print_flag(ret, sign);
 	ft_putstr_fd(ret.str, 1);
-	//ret = ft_print_flag(ret, sign);
+	ret = ft_print_flag_back(ret, sign);
 	ret.zero = 0;
 	ret.space = 0;
 	return (ret);
@@ -40,7 +40,7 @@ t_struct	ft_print_args(t_struct ret)
 
 t_struct	ft_start_specifier(va_list arg, const char *format, t_struct ret)
 {
-	//ret = ft_flags(arg, ret, format[ret.i + 1], format);
+	ret = ft_specifier_flags(arg, ret, format[ret.i + 1], format);
 	if (format[ret.i + 1] == 'c')
 		ret = ft_specifier_c(arg, ret);
 	else if (format[ret.i + 1] == 's')
@@ -112,7 +112,7 @@ int		main(int argc, const char *argv[])
 	int i = 2123;
 	unsigned int u = 2345;
 	
-	printf("Hello!! %p\n", u);
-	ft_printf("Hello!! %p",u);
+	printf("Hello!! %-10d\n", i);
+	ft_printf("Hello!! %-10d\n", i);
 	return (0);
 }

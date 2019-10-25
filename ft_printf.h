@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 17:44:36 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/24 22:05:28 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/25 18:04:09 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,13 @@ t_struct	ft_spcifier_d(va_list arg, t_struct ret);
 t_struct	ft_specifier_s(va_list arg, t_struct ret);
 t_struct	ft_specifier_u(va_list arg, t_struct ret);
 t_struct	ft_specifier_hex(va_list arg, t_struct ret, char c);
+t_struct	ft_specifier_flags(va_list arg, t_struct ret, char c, const char *s);
+t_struct	ft_flag_pointer(va_list arg, const char *s, t_struct ret);
+t_struct	ft_flag_point(va_list arg, t_struct ret, const char *s);
+t_struct	ft_flag_minus(va_list arg, t_struct ret, const char *s);
+t_struct	ft_print_flag(t_struct ret, int sign);
+t_struct	ft_print_flag_back(t_struct ret, int sign);
 int			ft_strlen_nb(long nb, int base);
+int			ft_is_convert(char c);
 
 #endif

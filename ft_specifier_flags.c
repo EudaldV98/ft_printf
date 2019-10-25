@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_specifier_flags.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 18:49:43 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/25 17:21:48 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/10/25 12:43:58 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/10/25 17:27:03 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "ft_printf.h"
 
-int		ft_strlen_nb(long nb, int base)
+t_struct	ft_specifier_flags(va_list arg, t_struct ret, char c, const char *s)
 {
-	int	len;
+	t_struct tmp;
 
-	if (nb == 0)
-		return (1);
-	len = 0;
-	if (nb < 0)
-		len = 1;
-	if (nb < 0)
-		nb *= -1;
-	while (nb >= 1)
-	{
-		nb /= base;
-		len++;
-	}
-	return (len);
-}
-
-int		ft_is_convert(char c)
-{
-	return (c == 'd' || c == 'i' || c == 'c' || c == 's' || c == 'p' || c == 'x'
-			|| c == 'X' || c == 'u');
+	tmp = ret;
+	if (c == '*')
+		ret = ft_flag_pointer(arg, s, ret);
+	else if (c == '.')
+		ret = ft_flag_point(arg, ret, s);
+	else if (c == '-')
+		ret = ft_flag_minus(arg, ret, s);
+	return (ret);
 }
