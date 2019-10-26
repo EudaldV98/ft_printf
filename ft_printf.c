@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 20:19:48 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/25 19:27:38 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/26 18:47:06 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int		main(int argc, const char *argv[])
 	int i = 2123;
 	unsigned int u = 2345;
 	
-	printf("Hello!! %-10d\n", i);
-	ft_printf("Hello!! %-10d\n", i);
+	printf("Hello!! %-.*d\n", 10, i);
+	ft_printf("Hello!! %-.*d\n", 10, i);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 17:11:18 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/25 17:22:36 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/26 18:19:30 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ t_struct	ft_flag_minus(va_list arg, t_struct ret, const char *s)
 			i++;
 		if (ft_is_convert(s[i]) == 1)
 		{
-			ret.space = ft_atoi((char *)&s[ret.i + 2]) - 1;
+			ret.space = -ft_atoi((char *)&s[ret.i + 2]) - 1;
+			ret.i = i - 1;
+		}
+		if (s[i] == '.')
+		{
+			ret.space = -ft_atoi((char *)&s[ret.i + 2]);
 			ret.i = i - 1;
 			ret = ft_flag_point(arg, ret, s);
 		}

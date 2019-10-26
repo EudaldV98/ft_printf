@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/24 18:49:43 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/25 17:21:48 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/10/26 19:39:34 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ int		ft_strlen_nb(long nb, int base)
 
 int		ft_is_convert(char c)
 {
-	return (c == 'd' || c == 'i' || c == 'c' || c == 's' || c == 'p' || c == 'x'
-			|| c == 'X' || c == 'u');
+	if (c == 'd' || c == 'i' || c == 'c' || c == 's' || c == 'p' || c == 'x'
+			|| c == 'X' || c == 'u')
+		return (1);
+	return (0);
 }
