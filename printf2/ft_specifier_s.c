@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_specifier_s.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 12:52:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/06 11:42:29 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/11/06 15:56:11 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/06 16:04:26 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *format, ...)
+void	ft_specifier_s(va_list arg, int *res, t_printf *t_flag)
 {
-	va_list		arg;
-	int			i;
-	int			res;
-	t_printf	*t_flag;
+	char *str;
 
-	i = 0;
-	res = 0;
-	va_start(arg, format);
-	while (format[i])
-	{
-		if (format[i] == '%')
-		{
-			t_flag = ft_parse_conv(&i, format, arg, &res);
-			i--;
-		}
-		else
-		{
-			ft_putchar_fd(format[i], 1);
-			res++;
-		}
-		i++;
-	}
-	va_end(arg);
-	return (res);
+	t_flag->conv = 0;
+	t_flag->width = t_flag->fl_z_before;
+	str = va_arg(arg, char *);
+	if (str)
+		ft_out(str, res, t_flag);
+	else
+		ft_out("(null)", res, t_flag);
+	if (t_flag->space_a > 0)
+		ft_space(t_flag->space_a, 1, res, t_flag);
 }
