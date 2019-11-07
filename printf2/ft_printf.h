@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:54:43 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/06 16:05:50 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/07 17:25:52 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@
 
 # define CAP "0123456789ABCDEF"
 # define MIN "0123456789abcdef"
-# define PTR 1
-# define XADR 2
-# define MXADR 3
+# define NUMB 0
+# define ADDR 1
+# define CHAR 2
+# define PADD 3
 
 typedef struct	s_printf
 {
@@ -46,4 +47,9 @@ int			ft_printf(const char *format, ...);
 t_printf	*ft_init_struct(void);
 int			ft_is_flag(char c, t_printf *t_flag, int *i);
 t_printf	*ft_parse_conv(int *i, const char *str, va_list arg, int *res);
+void		ft_update_value(t_printf *t_flag, int neg, int type);
+void		ft_handle_exceptions(t_printf *t_flag, int type);
+void		ft_out(char *str, int *res, t_printf *t_flag);
+void		ft_space(int nb, int cas, int *res, t_printf *t_flag);
+void		ft_handle_spaces(int *res, t_printf *t_flag, int size, int neg);
 #endif

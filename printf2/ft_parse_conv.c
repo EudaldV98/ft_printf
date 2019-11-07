@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:59:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/06 16:00:13 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/07 17:02:34 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_printf	*ft_init_struct(void)
 	t_flag->fl_z_before = 0;
 	t_flag->width = -1;
 	t_flag->conv = 1;
-	t_flag->size = 0;
+	t_flag->size = -1;
 	t_flag->pcent = 0;
 	t_flag->flag = 0;
 	return (t_flag);
@@ -37,7 +37,7 @@ int			ft_is_flag(char c, t_printf *t_flag, int *i)
 {
 	if (t_flag->conv == 0)
 	{
-		*i += 1;
+		*i++;
 		return (0);
 	}
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'x' ||
@@ -65,7 +65,7 @@ t_printf	*ft_parse_conv(int *i, const char *str, va_list arg, int *res)
 		str[*i] == 's' ? ft_specifier_s(arg, res, t_flag) : 0;
 		str[*i] == 'p' ? ft_specifier_p(arg, res, t_flag) : 0;
 		str[*i] == 'd' ? ft_specifier_d(arg, res, t_flag) : 0;
-		str[*i] == 'i' ? ft_specifier_i(arg, res, t_flag) : 0;
+		str[*i] == 'i' ? ft_specifier_d(arg, res, t_flag) : 0;
 		str[*i] == 'u' ? ft_specifier_u(arg, res, t_flag) : 0;
 		str[*i] == 'x' ? ft_specifier_x(arg, res, t_flag) : 0;
 		str[*i] == 'X' ? ft_specifier_X(arg, res, t_flag) : 0;
