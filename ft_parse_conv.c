@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:59:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/07 17:02:34 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/08 19:30:41 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int			ft_is_flag(char c, t_printf *t_flag, int *i)
 		return (0);
 	}
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'x' ||
-		c == 'X' || c == 'p' || c == 'u' || c == '%' || c == '-' || c == '0' ||
-		c == '.' || c == '*' || c == ' ' || (c > '0' && c <= '9'))
+		c == 'X' || c == 'u' || c == '%' || c == '-' || c == '0' || c == '.' ||
+		c == '*' || c == ' ' || (c > '0' && c <= '9'))
 		return (1);
 	return (0);
 }
@@ -58,9 +58,9 @@ t_printf	*ft_parse_conv(int *i, const char *str, va_list arg, int *res)
 		str[*i] == '0' ? ft_flag_zero(res, t_flag, i) : 0;
 		str[*i] > '0' && str[*i] <= '9' ?
 		ft_flag_num((char *)(str + *i), t_flag, i) : 0;
-		str[*i] == '-' ? ft_flag_m(res, t_flag, (char *)(str + *i + 1), i) : 0;
-		str[*i] == '.' ? ft_flag_p(res, t_flag, (char *)(str + *i + 1), i) : 0;
-		str[*i] == '*' ? ft_flag_pointer(arg, res, t_flag) : 0;
+		str[*i] == '-' ? ft_flag_minus(res, t_flag, (char *)(str + *i + 1), i) : 0;
+		str[*i] == '.' ? ft_flag_point(res, t_flag, (char *)(str + *i + 1), i) : 0;
+		str[*i] == '*' ? ft_flag_ptr(arg, res, t_flag) : 0;
 		str[*i] == 'c' ? ft_specifier_c(arg, res, t_flag) : 0;
 		str[*i] == 's' ? ft_specifier_s(arg, res, t_flag) : 0;
 		str[*i] == 'p' ? ft_specifier_p(arg, res, t_flag) : 0;

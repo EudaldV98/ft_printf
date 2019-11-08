@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:54:43 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/08 15:32:48 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/08 18:14:46 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,11 @@ void		ft_specifier_c(va_list arg, int *res, t_printf *t_flag);
 void		ft_specifier_d(va_list arg, int *res, t_printf *t_flag);
 void		ft_specifier_s(va_list arg, int *res, t_printf *t_flag);
 void		ft_specifier_u(va_list arg, int *res, t_printf *t_flag);
+void		ft_specifier_p(va_list arg, int *res, t_printf *t_flag);
+void		ft_specifier_x(va_list arg, int *res, t_printf *t_flag);
 
 void		ft_flag_zero(int *res, t_printf *t_flag, int *i);
 void		ft_flag_minus(int *res, t_printf *t_flag, char *str, int *i);
-void		ft_falg_point(int *res, t_printf *t_flag, char *str, int *i);
+void		ft_flag_point(int *res, t_printf *t_flag, char *str, int *i);
 void		ft_flag_ptr(va_list arg, int *res, t_printf *t_flag);
 #endif

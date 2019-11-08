@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:52:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/06 11:42:29 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/08 18:09:36 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int		ft_printf(const char *format, ...)
 	va_list		arg;
 	int			i;
 	int			res;
-	t_printf	*t_flag;
 
 	i = 0;
 	res = 0;
@@ -26,7 +25,7 @@ int		ft_printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
-			t_flag = ft_parse_conv(&i, format, arg, &res);
+			ft_parse_conv(&i, format, arg, &res);
 			i--;
 		}
 		else

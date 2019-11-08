@@ -6,13 +6,13 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:06:17 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/08 12:16:44 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/08 18:13:13 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_falg_point(int *res, t_printf *t_flag, char *str, int *i)
+void	ft_flag_point(int *res, t_printf *t_flag, char *str, int *i)
 {
 	int nb;
 
