@@ -5,45 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/25 17:11:18 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/26 18:19:30 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/11/07 19:57:35 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/08 12:00:44 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 
-t_struct	ft_flag_minus(va_list arg, t_struct ret, const char *s)
+void	ft_flag_minus(int *res, t_printf *t_flag, char *str, int *i)
 {
-	int i;
+	int nb;
 
-	i = ret.i + 2;
-	if (s[i] == '*')
-	{
-		ret.i++;
-		ret = ft_flag_pointer(arg, (const char *)s, ret);
-		ret.space = (ret.space < 0) ? ret.space : -ret.space;
-	}
-	if (s[i] == '.')
-	{
-		ret.i++;
-		ret = ft_flag_point(arg, ret, s);
-	}
-	else if (s[i] >= '0' && s[i] <= '9')
-	{
-		while (s[i] >= '0' && s[i] <= '9')
-			i++;
-		if (ft_is_convert(s[i]) == 1)
-		{
-			ret.space = -ft_atoi((char *)&s[ret.i + 2]) - 1;
-			ret.i = i - 1;
-		}
-		if (s[i] == '.')
-		{
-			ret.space = -ft_atoi((char *)&s[ret.i + 2]);
-			ret.i = i - 1;
-			ret = ft_flag_point(arg, ret, s);
-		}
-	}
-	return (ret);
+	if (str[0] == '0')
+		t_flag->flag = 5;
+	nb = ft_atoi(str);
+	t_flag->fl_min = 1;
+	if (nb < 1)
+		t_flag->space_a = nb;
+	else
+		t_flag->flag = 1;
+	if (nb == 0 && ft_isdigit(str[0]))
+		*i++;
+	else if (ft_isdigit(str[0]))
+		*i += ft_strlen(ft_itoa(nb));
 }

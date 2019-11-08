@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 20:09:59 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/24 21:23:42 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/08 15:31:56 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ char			*ft_itoa(long n);
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_strtrim(const char *s1, const char *set);
 char			**ft_split(const char *s, char c);
-
+char			*ft_itoa_base(long long nb, char *base);
+void			ft_putnbr_u_fd(unsigned int n, int fd);
 #endif

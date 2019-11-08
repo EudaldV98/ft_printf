@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flag_minus.c                                    :+:      :+:    :+:   */
+/*   ft_flag_ptr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/07 19:57:35 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/07 20:00:45 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/11/08 13:12:35 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/08 13:16:01 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_flag_minus(int *res, t_printf *t_flag, char *str, int *i)
+void	ft_flag_ptr(va_list arg, int *res, t_printf *t_flag)
 {
-	int nb;
-
-	if (str[0] == '0')
-		t_flag->flag = 5;
-	nb = ft_atoi(str);
-	t_flag->fl_min = 1;
-	if (nb < 1)
-		t_flag->space_a = nb;
+	if (!t_flag->fl_star)
+		t_flag->space_b = va_arg(arg, int);
+	else
+		t_flag->fl_z_before = va_arg(arg, int);
+	t_flag->fl_star++;
 }

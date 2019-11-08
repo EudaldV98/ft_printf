@@ -5,25 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 16:14:43 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/24 21:34:29 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/11/06 15:21:02 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/07 17:08:47 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
-t_struct	ft_specifier_c(va_list arg, t_struct ret)
+void	ft_specifier_c(va_list arg, int *res, t_printf *t_flag)
 {
-	unsigned char	c;
+	char c;
 
+	t_flag->conv = 0;
+	t_flag->width = t_flag->fl_z_before;
 	c = va_arg(arg, int);
-	if ((ret.str = malloc(sizeof(char) * 2)))
-	{
-		ret.str[0] = c;
-		ret.str[1] = '\0';
-		return (ret);
-	}
-	ret.str = NULL;
-	return (ret);
+	ft_update_value(t_flag, 0, CHAR);
+	ft_handle_space(res, t_flag, 1, 0);
+	if (c)
+		ft_putchar_fd(c, 1);
+	else
+		write(1, "\0", 1);
+	*res++;
+	if (t_flag->space_a > 0)
+		ft_space(t_flag->space_a, 1, res, t_flag);
 }

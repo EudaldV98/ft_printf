@@ -5,43 +5,61 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/22 17:44:36 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/25 18:04:09 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/10/31 12:54:43 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/08 15:32:48 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_PRINTF_H
-# define	FT_PRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdlib.h>
-# include <stdarg.h>
 # include <unistd.h>
+# include <stdarg.h>
+# include "libft/libft.h"
 
-# define CAPS "0123456789ABCDEF"
-# define MINU "0123456789abcdef"
+# define CAP "0123456789ABCDEF"
+# define MIN "0123456789abcdef"
+# define NUMB 0
+# define ADDR 1
+# define CHAR 2
+# define PADD 3
 
-typedef struct	s_struct
+typedef struct	s_printf
 {
-	int		i;
-	int		len;
-	int		space;
-	int 	zero;
-	char	*str;
-}				t_struct;
-int		ft_printf(const char *format, ...);
+	int		fl_min;
+	int		space_b;
+	int		space_a;
+	int		fl_z;
+	int		fl_z_before;
+	int		fl_star;
+	int		width;
+	int		conv;
+	int		size;
+	int		fl_point;
+	int		pcent;
+	int		flag;
+}				t_printf;
 
-t_struct	ft_specifier_c(va_list arg, t_struct ret);
-t_struct	ft_spcifier_d(va_list arg, t_struct ret);
-t_struct	ft_specifier_s(va_list arg, t_struct ret);
-t_struct	ft_specifier_u(va_list arg, t_struct ret);
-t_struct	ft_specifier_hex(va_list arg, t_struct ret, char c);
-t_struct	ft_specifier_flags(va_list arg, t_struct ret, char c, const char *s);
-t_struct	ft_flag_pointer(va_list arg, const char *s, t_struct ret);
-t_struct	ft_flag_point(va_list arg, t_struct ret, const char *s);
-t_struct	ft_flag_minus(va_list arg, t_struct ret, const char *s);
-t_struct	ft_print_flag(t_struct ret, int sign);
-t_struct	ft_print_flag_back(t_struct ret, int sign);
-int			ft_strlen_nb(long nb, int base);
-int			ft_is_convert(char c);
+void		ft_specifier_s(va_list arg, int *res, t_printf *t_flag);
+void		ft_specifier_c(va_list arg, int *res, t_printf *t_flag);
+int			ft_printf(const char *format, ...);
+t_printf	*ft_init_struct(void);
+int			ft_is_flag(char c, t_printf *t_flag, int *i);
+t_printf	*ft_parse_conv(int *i, const char *str, va_list arg, int *res);
+void		ft_update_value(t_printf *t_flag, int neg, int type);
+void		ft_handle_exceptions(t_printf *t_flag, int type);
+void		ft_out(char *str, int *res, t_printf *t_flag);
+void		ft_space(int nb, int cas, int *res, t_printf *t_flag);
+void		ft_handle_spaces(int *res, t_printf *t_flag, int size, int neg);
 
+void		ft_specifier_c(va_list arg, int *res, t_printf *t_flag);
+void		ft_specifier_d(va_list arg, int *res, t_printf *t_flag);
+void		ft_specifier_s(va_list arg, int *res, t_printf *t_flag);
+void		ft_specifier_u(va_list arg, int *res, t_printf *t_flag);
+
+void		ft_flag_zero(int *res, t_printf *t_flag, int *i);
+void		ft_flag_minus(int *res, t_printf *t_flag, char *str, int *i);
+void		ft_falg_point(int *res, t_printf *t_flag, char *str, int *i);
+void		ft_flag_ptr(va_list arg, int *res, t_printf *t_flag);
 #endif

@@ -5,37 +5,50 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 18:49:43 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/10/26 19:39:34 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/11/07 15:41:49 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/08 15:34:46 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "ft_printf.h"
 
-int		ft_strlen_nb(long nb, int base)
+void	ft_out(char *str, int *res, t_printf *t_flag)
 {
-	int	len;
+	int i;
+	int width;
 
-	if (nb == 0)
-		return (1);
-	len = 0;
-	if (nb < 0)
-		len = 1;
-	if (nb < 0)
-		nb *= -1;
-	while (nb >= 1)
+	i = 0;
+	width = t_flag->width;
+	while (t_flag->width != 0 && str[i])
 	{
-		nb /= base;
-		len++;
+		ft_putchar_fd(str[i], 1);
+		*res++;
+		width--;
+		i++;
 	}
-	return (len);
 }
 
-int		ft_is_convert(char c)
+void	ft_space(int nb, int cas, int *res, t_printf *t_flag)
 {
-	if (c == 'd' || c == 'i' || c == 'c' || c == 's' || c == 'p' || c == 'x'
-			|| c == 'X' || c == 'u')
-		return (1);
-	return (0);
+	while (nb > 0)
+	{
+		if (cas)
+			ft_putchar_fd(' ', 1);
+		else
+			ft_putchar_fd('0', 1);
+		*res++;
+		nb--;
+	}
+}
+
+void	ft_handle_spaces(int *res, t_printf *t_flag, int size, int neg)
+{
+	if (t_flag->space_b)
+		ft_space(t_flag->space_b, 1, res, t_flag);
+	if (neg)
+		write(1, "-", 1);
+	else if (t_flag->flag == 7)
+		write(1, "0x", 2);
+	if (t_flag->fl_z_before)
+		ft_space(t_flag->fl_z_before, 0, res, t_flag);
 }
