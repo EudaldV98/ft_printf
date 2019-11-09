@@ -6,11 +6,11 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:59:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/08 19:30:41 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/09 20:05:04 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
 t_printf	*ft_init_struct(void)
 {
@@ -37,7 +37,7 @@ int			ft_is_flag(char c, t_printf *t_flag, int *i)
 {
 	if (t_flag->conv == 0)
 	{
-		*i++;
+		*i += 1;
 		return (0);
 	}
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'x' ||
@@ -54,12 +54,12 @@ t_printf	*ft_parse_conv(int *i, const char *str, va_list arg, int *res)
 	t_flag = ft_init_struct();
 	while (ft_is_flag(str[*i], t_flag, i))
 	{
-		*i++;
+		*i += 1;
 		str[*i] == '0' ? ft_flag_zero(res, t_flag, i) : 0;
 		str[*i] > '0' && str[*i] <= '9' ?
-		ft_flag_num((char *)(str + *i), t_flag, i) : 0;
-		str[*i] == '-' ? ft_flag_minus(res, t_flag, (char *)(str + *i + 1), i) : 0;
-		str[*i] == '.' ? ft_flag_point(res, t_flag, (char *)(str + *i + 1), i) : 0;
+		ft_flag_numbers((char *)(str + *i), t_flag, i) : 0;
+		str[*i] == '-' ? ft_flag_m(res, t_flag, (char*)(str + *i + 1), i) : 0;
+		str[*i] == '.' ? ft_flag_p(res, t_flag, (char*)(str + *i + 1), i) : 0;
 		str[*i] == '*' ? ft_flag_ptr(arg, res, t_flag) : 0;
 		str[*i] == 'c' ? ft_specifier_c(arg, res, t_flag) : 0;
 		str[*i] == 's' ? ft_specifier_s(arg, res, t_flag) : 0;
@@ -68,8 +68,8 @@ t_printf	*ft_parse_conv(int *i, const char *str, va_list arg, int *res)
 		str[*i] == 'i' ? ft_specifier_d(arg, res, t_flag) : 0;
 		str[*i] == 'u' ? ft_specifier_u(arg, res, t_flag) : 0;
 		str[*i] == 'x' ? ft_specifier_x(arg, res, t_flag) : 0;
-		str[*i] == 'X' ? ft_specifier_X(arg, res, t_flag) : 0;
-		str[*i] == '%' ? ft_specifier_mod(arg, res, t_flag) : 0;
+		str[*i] == 'X' ? ft_specifier_xmaj(arg, res, t_flag) : 0;
+		str[*i] == '%' ? ft_specifier_mod(res, t_flag) : 0;
 	}
 	free(t_flag);
 	return (t_flag);

@@ -6,11 +6,11 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 15:41:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/08 15:34:46 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/09 20:05:13 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
 void	ft_out(char *str, int *res, t_printf *t_flag)
 {
@@ -22,7 +22,7 @@ void	ft_out(char *str, int *res, t_printf *t_flag)
 	while (t_flag->width != 0 && str[i])
 	{
 		ft_putchar_fd(str[i], 1);
-		*res++;
+		*res += 1;
 		width--;
 		i++;
 	}
@@ -36,7 +36,7 @@ void	ft_space(int nb, int cas, int *res, t_printf *t_flag)
 			ft_putchar_fd(' ', 1);
 		else
 			ft_putchar_fd('0', 1);
-		*res++;
+		*res += 1;
 		nb--;
 	}
 }

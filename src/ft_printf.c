@@ -1,22 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flag_ptr.c                                      :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 13:12:35 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/08 13:16:01 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/10/31 12:52:49 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/09 20:05:17 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
-void	ft_flag_ptr(va_list arg, int *res, t_printf *t_flag)
+int		ft_printf(const char *format, ...)
 {
-	if (!t_flag->fl_star)
-		t_flag->space_b = va_arg(arg, int);
-	else
-		t_flag->fl_z_before = va_arg(arg, int);
-	t_flag->fl_star++;
+	va_list		arg;
+	int			i;
+	int			res;
+
+	i = 0;
+	res = 0;
+	va_start(arg, format);
+	while (format[i])
+	{
+		if (format[i] == '%')
+		{
+			ft_parse_conv(&i, format, arg, &res);
+			i--;
+		}
+		else
+		{
+			ft_putchar_fd(format[i], 1);
+			res++;
+		}
+		i++;
+	}
+	va_end(arg);
+	return (res);
 }

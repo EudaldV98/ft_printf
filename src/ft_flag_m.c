@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flag_point.c                                    :+:      :+:    :+:   */
+/*   ft_flag_m.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 12:06:17 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/08 18:13:13 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/11/07 19:57:35 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/09 20:04:26 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
-void	ft_flag_point(int *res, t_printf *t_flag, char *str, int *i)
+void	ft_flag_m(int *res, t_printf *t_flag, char *str, int *i)
 {
 	int nb;
 
-	*i++;
+	if (str[0] == '0')
+		t_flag->flag = 5;
 	nb = ft_atoi(str);
-	t_flag->fl_point = 1;
-	if (nb >= 1)
-		t_flag->width = nb;
+	t_flag->fl_min = 1;
+	if (nb > 1)
+		t_flag->space_a = nb;
 	else
 		t_flag->flag = 1;
-	if (t_flag->fl_z_before > t_flag->width)
-		t_flag->flag = 2;
-	if (!ft_isdigit(str[0]))
-		t_flag->flag = 3;
-	else if (t_flag->fl_z_before)
-		t_flag->flag = 4;
 	if (nb == 0 && ft_isdigit(str[0]))
-		*i++;
+		*i += 1;
 	else if (ft_isdigit(str[0]))
-		*i += ft_strlen(ft_itoa(nb));
+		*i += ft_strlen_nb(nb);
 }

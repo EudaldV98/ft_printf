@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_flag_numbers.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 12:52:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/08 18:09:36 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/11/09 16:39:54 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/09 20:04:23 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
-int		ft_printf(const char *format, ...)
+void	ft_flag_numbers(char *str, t_printf *t_flag, int *i)
 {
-	va_list		arg;
-	int			i;
-	int			res;
+	int nb;
 
-	i = 0;
-	res = 0;
-	va_start(arg, format);
-	while (format[i])
+	nb = ft_atoi(str);
+	if (nb >= 1)
 	{
-		if (format[i] == '%')
-		{
-			ft_parse_conv(&i, format, arg, &res);
-			i--;
-		}
+		if (t_flag->fl_z && !t_flag->fl_z_before)
+			t_flag->fl_z_before = nb;
 		else
-		{
-			ft_putchar_fd(format[i], 1);
-			res++;
-		}
-		i++;
+			t_flag->space_b = nb;
 	}
-	va_end(arg);
-	return (res);
+	if (nb == 0 && ft_isdigit(str[0]))
+		*i += 1;
+	else if (ft_isdigit(str[0]))
+		*i += ft_strlen_nb(nb);
 }

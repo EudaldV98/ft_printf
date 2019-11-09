@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:54:43 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/08 18:14:46 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/09 20:07:50 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 # define CAP "0123456789ABCDEF"
 # define MIN "0123456789abcdef"
@@ -59,9 +59,15 @@ void		ft_specifier_s(va_list arg, int *res, t_printf *t_flag);
 void		ft_specifier_u(va_list arg, int *res, t_printf *t_flag);
 void		ft_specifier_p(va_list arg, int *res, t_printf *t_flag);
 void		ft_specifier_x(va_list arg, int *res, t_printf *t_flag);
+void		ft_specifier_xmaj(va_list aux, int *res, t_printf *t_flag);
+int			ft_nb_exception(long long nb, int *res, t_printf *t_flag);
+void		ft_specifier_mod(int *res, t_printf *t_flag);
+int			ft_x_exception(long long ptr, int *res, t_printf *t_flag);
 
 void		ft_flag_zero(int *res, t_printf *t_flag, int *i);
-void		ft_flag_minus(int *res, t_printf *t_flag, char *str, int *i);
-void		ft_flag_point(int *res, t_printf *t_flag, char *str, int *i);
+void		ft_flag_m(int *res, t_printf *t_flag, char *str, int *i);
+void		ft_flag_p(int *res, t_printf *t_flag, char *str, int *i);
 void		ft_flag_ptr(va_list arg, int *res, t_printf *t_flag);
+void		ft_flag_numbers(char *str, t_printf *t_flag, int *i);
+
 #endif

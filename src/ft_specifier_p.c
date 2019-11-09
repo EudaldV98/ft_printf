@@ -6,11 +6,11 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 13:47:35 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/08 15:26:12 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/09 20:05:33 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
 void	ft_specifier_p(va_list arg, int *res, t_printf *t_flag)
 {
@@ -34,7 +34,8 @@ void	ft_specifier_p(va_list arg, int *res, t_printf *t_flag)
 		return ;
 	ft_putstr_fd(tmp, 1);
 	*res += ft_strlen(tmp);
-	free(tmp);
 	if (t_flag->space_a > 0)
 		ft_space(t_flag->space_a, 1, res, t_flag);
+	free(tmp);
+	tmp = NULL;
 }

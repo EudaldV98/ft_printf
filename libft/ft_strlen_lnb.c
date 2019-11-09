@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 17:49:12 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/08 17:49:44 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/09 19:56:15 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		ft_strlen_lnb(long long nb)
 	char	*lnb;
 	int		size;
 
-	lnb = ft_lgitoa(nb);
+	lnb = ft_itoa_lng(nb);
 	size = ft_strlen(lnb);
 	free(lnb);
 	return (size);

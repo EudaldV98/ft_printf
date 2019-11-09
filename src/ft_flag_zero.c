@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_u_fd.c                                   :+:      :+:    :+:   */
+/*   ft_flag_zero.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/08 15:29:21 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/09 19:52:48 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/11/08 12:01:10 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/09 20:04:59 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../inc/ft_printf.h"
 
-void	ft_putnbr_u_fd(unsigned int n, int fd)
+void	ft_flag_zero(int *res, t_printf *t_flag, int *i)
 {
-	if (n > 9)
-		ft_putnbr_u_fd(n / 10, fd);
-	ft_putchar_fd((n % 10) + '0', fd);
+	if (!t_flag->fl_min)
+		t_flag->fl_z = 1;
+	else
+		t_flag->flag = 5;
+	*i+= 1;
 }

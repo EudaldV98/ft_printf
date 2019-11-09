@@ -6,11 +6,11 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:06:21 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/08 18:01:46 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/09 20:05:10 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../inc/ft_printf.h"
 
 void	ft_update_space_b(t_printf *t_flag, int neg)
 {
@@ -99,5 +99,5 @@ void	ft_update_value(t_printf *t_flag, int neg, int type)
 	ft_update_space_b(t_flag, neg);
 	ft_update_zero_b(t_flag, neg);
 	ft_update_space_a(t_flag, neg);
-	ft_handle_exception(t_flag, type);
+	ft_handle_exceptions(t_flag, type);
 }
