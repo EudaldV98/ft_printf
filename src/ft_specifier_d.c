@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 17:02:59 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/09 20:05:26 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/10 19:54:22 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,13 @@ void	ft_specifier_d(va_list aux, int *res, t_printf *t_flag)
 	t_flag->size = ft_strlen_nb(nb);
 	ft_update_value(t_flag, ((nb < 0) ? 1 : 0), NUMB);
 	ft_handle_spaces(res, t_flag, 1, ((nb < 0) ? 1 : 0));
-	if (nb < 0)
+	if (nb == -2147483647)
+		nb = nb;
+	else if (nb < 0)
 		nb = -nb;
 	if (ft_nb_exception(nb, res, t_flag))
 		return ;
-	ft_putnbr_fd(nb, 1);
+	ft_putlng_fd(nb, 1);
 	*res += t_flag->size;
 	if (t_flag->space_a > 0)
 		ft_space(t_flag->space_a, 1, res, t_flag);
