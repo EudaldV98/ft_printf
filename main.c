@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 19:24:03 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/10 19:36:16 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/11 19:31:46 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ int		main(int ac, char **av)
 	ac = 1;
 
 
-	res = printf("INT MAX: %d\n", nb);
-	printf("TRUE value : %d\n\n", res);
-	res = ft_printf("INT MAX: %d\n", nb);
-	printf("Return value : %d\n\n", res);
-
-	res = printf("INT MAX: %d\n", -2);
-	printf("TRUE value : %d\n\n", res);
-	res = ft_printf("INT MAX: %d\n", -2);
-	printf("Return value : %d\n\n", res);
+	res = printf("TRU FLAGS : %.*d\n",atoi(av[1]) ,atoi(av[2]));
+	printf("return printf : %d\n\n", res);
+	res = ft_printf("OWN FLAGS : %.*d\n", atoi(av[1]), atoi(av[2]));
+	printf("return ft_printf : %d\n\n", res);
 /*
+	res = printf("TRUE FLAGS : %d\n", -2);
+	printf("return printf : %d\n\n", res);
+	res = ft_printf("MYFLAGS : %d\n", -2);
+	printf("return ft_printf : %d\n\n", res);
+
 	printf("Test\n");
 	res = printf("p0 % .3s\n", "cccc");
 	printf("Return value : %d\n\n", res);
