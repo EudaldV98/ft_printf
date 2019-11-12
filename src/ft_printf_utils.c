@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 15:41:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/12 15:23:59 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/12 17:25:58 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	ft_space(int nb, int cas, int *res, t_printf *t_flag)
 
 void	ft_handle_spaces(int *res, t_printf *t_flag, int size, int neg)
 {
-	printf("\nVALUES %d   %d\n", t_flag->space_b, t_flag->fl_z_before);
 	if (t_flag->space_b)
 		ft_space(t_flag->space_b, 1, res, t_flag);
 	if (neg)
