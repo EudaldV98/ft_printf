@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:56:11 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/13 17:15:17 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/13 20:55:21 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,12 @@ void	ft_specifier_s(va_list aux, int *res, t_printf *t_flag)
 	size = ft_strlen(str);
 	if (!str)
 		size = 6;
-	// printf("\nSIZE : %d\n", t_flag->width);
+	// if (t_flag->space_b > size && t_flag->fl_point && !t_flag->)
+	// {
+	// 	ft_out(str, res, t_flag);
+	// 	return ;
+	// }
+	// printf("\nSIZE : %d\n", t_flag->space_b);
 	if (ft_str_exception(t_flag, res))
 		return ;
 	if (t_flag->fl_point && t_flag->width < size && t_flag->width != -1)
