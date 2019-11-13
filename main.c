@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/10 19:24:03 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/12 17:37:18 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/13 14:10:05 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int		main(int ac, char **av)
 	ac = 1;
 
 
-	res = printf("TRU FLAGS : %-*.*d\n",atoi(av[1]), atoi(av[2]), atoi(av[3]));
+	res = printf("TRU FLAGS : %.*s\n",atoi(av[1]), atoi(av[2]), atoi(av[3]));
 	printf("return printf : %d\n\n", res);
-	res = ft_printf("OWN FLAGS : %-*.*d\n", atoi(av[1]), atoi(av[2]), atoi(av[3]));
+	res = ft_printf("OWN FLAGS : %.*s\n", atoi(av[1]), atoi(av[2]), atoi(av[3]));
 	printf("return ft_printf : %d\n\n", res);
 /*
 	res = printf("TRUE FLAGS : %d\n", -2);
