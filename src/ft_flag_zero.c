@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:01:10 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/09 20:04:59 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/13 16:49:54 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ void	ft_flag_zero(int *res, t_printf *t_flag, int *i)
 		t_flag->fl_z = 1;
 	else
 		t_flag->flag = 5;
-	*i+= 1;
+	*i += 1;
 }

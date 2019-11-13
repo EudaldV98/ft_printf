@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 12:06:17 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/12 16:58:51 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/13 16:48:16 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_flag_p(int *res, t_printf *t_flag, char *str, int *i)
 		t_flag->flag = 2;
 	if (!ft_isdigit(str[0]))
 		t_flag->flag = 3;
-	else if (t_flag->fl_z_before)
+	else if (t_flag->fl_z_before > nb)
 		t_flag->flag = 4;
 	if (nb == 0 && ft_isdigit(str[0]))
 		*i += 1;

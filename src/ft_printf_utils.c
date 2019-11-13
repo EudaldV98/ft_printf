@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 15:41:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/12 17:25:58 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/13 16:31:21 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_out(char *str, int *res, t_printf *t_flag)
 
 	i = 0;
 	width = t_flag->width;
-	while (t_flag->width != 0 && str[i])
+	while (width != 0 && str[i])
 	{
 		ft_putchar_fd(str[i], 1);
 		*res += 1;

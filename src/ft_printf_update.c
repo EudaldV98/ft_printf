@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:06:21 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/09 20:05:10 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/13 16:37:42 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_update_zero_b(t_printf *t_flag, int neg)
 		t_flag->fl_z_before -= t_flag->size;
 	if (t_flag->width > t_flag->fl_z_before)
 		t_flag->fl_z_before = t_flag->width - t_flag->size + neg;
-	if (t_flag->fl_z_before && t_flag->width == 1 && t_flag->fl_z_before < 0)
+	if (t_flag->fl_z && t_flag->width == 1 && t_flag->fl_z_before < 0)
 		t_flag->space_b += t_flag->fl_z_before;
 }
 

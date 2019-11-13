@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:59:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/09 20:05:04 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/13 16:51:12 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			ft_is_flag(char c, t_printf *t_flag, int *i)
 	return (0);
 }
 
-t_printf	*ft_parse_conv(int *i, const char *str, va_list arg, int *res)
+void	*ft_parse_conv(int *i, const char *str, va_list arg, int *res)
 {
 	t_printf	*t_flag;
 
@@ -72,5 +72,4 @@ t_printf	*ft_parse_conv(int *i, const char *str, va_list arg, int *res)
 		str[*i] == '%' ? ft_specifier_mod(res, t_flag) : 0;
 	}
 	free(t_flag);
-	return (t_flag);
 }
