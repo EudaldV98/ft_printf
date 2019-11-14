@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:06:21 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/13 16:37:42 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/14 18:30:43 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,13 @@ void	ft_update_space_b(t_printf *t_flag, int neg)
 	}
 	if (t_flag->width > -1)
 	{
-		if (t_flag->fl_z_before > t_flag->width)
+		// printf("\nVALUE ZBEFORE -> %d\n", t_flag->fl_z_before);
+		// printf("\nVALUE SBEFORE -> %d\n", t_flag->space_b);
+		// printf("\nVALUE WIDTH -> %d\n", t_flag->width);
+		// printf("\nVALUE SIZE -> %d\n", t_flag->size);
+		if (t_flag->size > t_flag->width && !t_flag->fl_z_before)
+			t_flag->space_b -= t_flag->size + neg;
+		else if (t_flag->fl_z_before > t_flag->width)
 		{
 			t_flag->space_b = t_flag->fl_z_before - t_flag->width - neg;
 			t_flag->fl_z_before = 0;
@@ -34,7 +40,7 @@ void	ft_update_space_b(t_printf *t_flag, int neg)
 		if (t_flag->fl_z_before)
 			t_flag->space_b -= (t_flag->fl_z_before);
 		else
-			t_flag->space_b -= (t_flag->size);
+			t_flag->space_b -= t_flag->size;
 	}
 }
 
@@ -60,7 +66,11 @@ void	ft_update_space_a(t_printf *t_flag, int neg)
 	if (t_flag->space_a)
 	{
 		if (t_flag->width > -1)
+		{
 			t_flag->space_a -= (t_flag->width + neg);
+			if (t_flag->width == 1)
+				t_flag->space_a -= 1;
+		}
 		else
 			t_flag->space_a -= t_flag->size;
 	}

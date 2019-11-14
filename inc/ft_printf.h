@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:54:43 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/13 16:42:47 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/14 16:25:39 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		ft_specifier_c(va_list arg, int *res, t_printf *t_flag);
 int			ft_printf(const char *format, ...);
 t_printf	*ft_init_struct(void);
 int			ft_is_flag(char c, t_printf *t_flag, int *i);
-void		*ft_parse_conv(int *i, const char *str, va_list arg, int *res);
+void		ft_parse_conv(int *i, const char *str, va_list arg, int *res);
 void		ft_update_value(t_printf *t_flag, int neg, int type);
 void		ft_handle_exceptions(t_printf *t_flag, int type);
 void		ft_out(char *str, int *res, t_printf *t_flag);
@@ -67,7 +67,7 @@ int			ft_x_exception(long long ptr, int *res, t_printf *t_flag);
 void		ft_flag_zero(int *res, t_printf *t_flag, int *i);
 void		ft_flag_m(int *res, t_printf *t_flag, char *str, int *i);
 void		ft_flag_p(int *res, t_printf *t_flag, char *str, int *i);
-void		ft_flag_ptr(va_list arg, int *res, t_printf *t_flag);
+void		ft_flag_ptr(va_list arg, int *i, t_printf *t_flag, char *str);
 void		ft_flag_numbers(char *str, t_printf *t_flag, int *i);
 
 #endif

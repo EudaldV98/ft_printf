@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 19:57:35 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/09 20:04:26 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/14 19:07:38 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_flag_m(int *res, t_printf *t_flag, char *str, int *i)
 		t_flag->flag = 5;
 	nb = ft_atoi(str);
 	t_flag->fl_min = 1;
-	if (nb > 1)
+	if (nb >= 1)
 		t_flag->space_a = nb;
 	else
 		t_flag->flag = 1;
