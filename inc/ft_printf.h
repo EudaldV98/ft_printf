@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:54:43 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/14 16:25:39 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/15 19:55:02 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,34 @@ typedef struct	s_printf
 	int		flag;
 }				t_printf;
 
-void		ft_specifier_s(va_list arg, int *res, t_printf *t_flag);
-void		ft_specifier_c(va_list arg, int *res, t_printf *t_flag);
-int			ft_printf(const char *format, ...);
-t_printf	*ft_init_struct(void);
-int			ft_is_flag(char c, t_printf *t_flag, int *i);
-void		ft_parse_conv(int *i, const char *str, va_list arg, int *res);
-void		ft_update_value(t_printf *t_flag, int neg, int type);
-void		ft_handle_exceptions(t_printf *t_flag, int type);
-void		ft_out(char *str, int *res, t_printf *t_flag);
-void		ft_space(int nb, int cas, int *res, t_printf *t_flag);
-void		ft_handle_spaces(int *res, t_printf *t_flag, int size, int neg);
+void			ft_specifier_s(va_list arg, int *res, t_printf *t_flag);
+void			ft_specifier_c(va_list arg, int *res, t_printf *t_flag);
+int				ft_printf(const char *format, ...);
+t_printf		*ft_init_struct(void);
+int				ft_is_flag(char c, t_printf *t_flag, int *i);
+void			ft_parse_conv(int *i, const char *str, va_list arg, int *res);
+void			ft_update_value(t_printf *t_flag, int neg, int type);
+void			ft_handle_exceptions(t_printf *t_flag, int type);
+void			ft_out(char *str, int *res, t_printf *t_flag);
+void			ft_space(int nb, int cas, int *res, t_printf *t_flag);
+void			ft_handle_spaces(int *res, t_printf *t_flag, int size, int neg);
+void			ft_update_zerobefore(t_printf *t_flag, int neg);
 
-void		ft_specifier_c(va_list arg, int *res, t_printf *t_flag);
-void		ft_specifier_d(va_list arg, int *res, t_printf *t_flag);
-void		ft_specifier_s(va_list arg, int *res, t_printf *t_flag);
-void		ft_specifier_u(va_list arg, int *res, t_printf *t_flag);
-void		ft_specifier_p(va_list arg, int *res, t_printf *t_flag);
-void		ft_specifier_x(va_list arg, int *res, t_printf *t_flag);
-void		ft_specifier_xmaj(va_list aux, int *res, t_printf *t_flag);
-int			ft_nb_exception(long long nb, int *res, t_printf *t_flag);
-void		ft_specifier_mod(int *res, t_printf *t_flag);
-int			ft_x_exception(long long ptr, int *res, t_printf *t_flag);
+void			ft_specifier_c(va_list arg, int *res, t_printf *t_flag);
+void			ft_specifier_d(va_list arg, int *res, t_printf *t_flag);
+void			ft_specifier_s(va_list arg, int *res, t_printf *t_flag);
+void			ft_specifier_u(va_list arg, int *res, t_printf *t_flag);
+void			ft_specifier_p(va_list arg, int *res, t_printf *t_flag);
+void			ft_specifier_x(va_list arg, int *res, t_printf *t_flag);
+void			ft_specifier_xmaj(va_list aux, int *res, t_printf *t_flag);
+int				ft_nb_exception(long long nb, int *res, t_printf *t_flag);
+void			ft_specifier_mod(int *res, t_printf *t_flag);
+int				ft_x_exception(long long ptr, int *res, t_printf *t_flag);
 
-void		ft_flag_zero(int *res, t_printf *t_flag, int *i);
-void		ft_flag_m(int *res, t_printf *t_flag, char *str, int *i);
-void		ft_flag_p(int *res, t_printf *t_flag, char *str, int *i);
-void		ft_flag_ptr(va_list arg, int *i, t_printf *t_flag, char *str);
-void		ft_flag_numbers(char *str, t_printf *t_flag, int *i);
+void			ft_flag_zero(int *res, t_printf *t_flag, int *i);
+void			ft_flag_m(int *res, t_printf *t_flag, char *str, int *i);
+void			ft_flag_p(int *res, t_printf *t_flag, char *str, int *i);
+void			ft_flag_ptr(va_list arg, int *i, t_printf *t_flag, char *str);
+void			ft_flag_numbers(char *str, t_printf *t_flag, int *i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 17:02:59 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/14 17:54:09 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/15 19:47:28 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_nb_exception(long long nb, int *res, t_printf *t_flag)
 	if (t_flag->flag == 3 && nb == 0)
 	{
 		if (t_flag->space_a > 0)
-			ft_space(t_flag->space_a, 1, res, t_flag);
+			ft_space(t_flag->space_a + 1, 1, res, t_flag);
 		if (t_flag->size == 1 && t_flag->space_b > 0)
 			ft_space(t_flag->space_a + 1, 1, res, t_flag);
 		return (1);
@@ -45,10 +45,16 @@ void	ft_specifier_d(va_list aux, int *res, t_printf *t_flag)
 	ft_update_value(t_flag, ((nb < 0) ? 1 : 0), NUMB);
 	if (nb <= 0 && t_flag->fl_z_before > 0 && t_flag->fl_star)
 		t_flag->fl_z_before++;
+	if (t_flag->fl_z_before <= 0 && t_flag->space_b && t_flag->fl_point >= 1
+	&& t_flag->fl_star == 1)
+	{
+		t_flag->fl_z_before = t_flag->space_b;
+		if (nb < 0)
+			t_flag->fl_z_before++;
+		t_flag->space_b = 0;
+	}
 	ft_handle_spaces(res, t_flag, 1, ((nb < 0) ? 1 : 0));
-	if (nb == -2147483647)
-		nb = nb;
-	else if (nb < 0)
+	if (nb < 0)
 		nb = -nb;
 	if (ft_nb_exception(nb, res, t_flag))
 		return ;

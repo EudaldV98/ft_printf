@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 15:49:50 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/09 20:05:46 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/15 16:24:54 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int		ft_x_exception(long long ptr, int *res, t_printf *t_flag)
 {
+	if (t_flag->flag == 1 && ptr == 0)
+		return (0);
 	if (t_flag->flag == 2 && ptr == 0)
 	{
 		if (t_flag->space_a > 0)
 			ft_space(t_flag->space_a, 1, res, t_flag);
 		if (t_flag->size == 1 && t_flag->space_b > 0)
-			ft_space(t_flag->space_a + 2, 1, res, t_flag);
+			ft_space(t_flag->space_a + 1, 1, res, t_flag);
 		return (1);
 	}
 	if (t_flag->flag == 3 && ptr == 0)
@@ -27,7 +29,7 @@ int		ft_x_exception(long long ptr, int *res, t_printf *t_flag)
 		if (t_flag->space_a > 0)
 			ft_space(t_flag->space_a, 1, res, t_flag);
 		if (t_flag->size == 1 && t_flag->space_b > 0)
-			ft_space(t_flag->space_a + 2, 1, res, t_flag);
+			ft_space(t_flag->space_a + 1, 1, res, t_flag);
 		return (1);
 	}
 	return (0);

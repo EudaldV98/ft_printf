@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 15:56:11 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/14 15:21:38 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/15 16:51:06 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 int		ft_str_exception(t_printf *t_flag, int *res)
 {
 	if ((t_flag->flag == 3 || t_flag->flag == 2) &&
-	!t_flag->fl_z_before)
+		!t_flag->fl_z_before)
 	{
 		if (t_flag->space_b)
 			ft_space(t_flag->space_b, 1, res, t_flag);
+		if (t_flag->space_a)
+			ft_space(t_flag->space_a, 1, res, t_flag);
 		return (1);
 	}
 	if (t_flag->fl_star == 2 && t_flag->fl_z_before > t_flag->space_b
-	&& t_flag->flag != 3)
+		&& t_flag->flag != 3)
 	{
 		t_flag->space_b = 0;
 		t_flag->space_a = 0;

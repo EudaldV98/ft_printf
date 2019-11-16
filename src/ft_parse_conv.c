@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:59:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/14 16:25:33 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/15 19:52:22 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int			ft_is_flag(char c, t_printf *t_flag, int *i)
 	return (0);
 }
 
-void	ft_parse_conv(int *i, const char *str, va_list arg, int *res)
+void		ft_parse_conv(int *i, const char *str, va_list arg, int *res)
 {
 	t_printf	*t_flag;
 
