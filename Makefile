@@ -71,7 +71,7 @@ OBJLIB = $(addprefix $(OBJLIB_PATH)/,$(OBJLIB_NAME))
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(OBJLIB)
+$(NAME): $(OBJ) $(OBJLIB) $(INC)
 	@make -C libft
 	@ar rc $(NAME) $(OBJ) $(OBJLIB)
 	@ranlib $(NAME)

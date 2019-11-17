@@ -61,7 +61,7 @@ _IGREY = $'\033[47m
 
 all : $(NAME)
 
-$(NAME) : $(OBJS_LIBFT)
+$(NAME) : $(OBJS_LIBFT) $(INCLUDES)
 	@echo "$(_END)$(_GREEN) [OK]\t$(_UNDER)$(_YELLOW)"
 	@ar rc $(NAME) $(OBJS_LIBFT)
 	@ranlib $(NAME)

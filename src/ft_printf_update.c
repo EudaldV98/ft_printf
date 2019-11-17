@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:06:21 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/16 21:15:20 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/17 20:43:12 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	ft_update_space_b(t_printf *t_flag, int neg)
 {
-	// printf("VAL : %d\n", t_flag->fl_star);
-	// if (t_flag->space_b > t_flag->fl_z_before && t_flag->fl_point
-	// 	&& t_flag->fl_star)
-	// 	t_flag->space_b--;
+	if (t_flag->space_b > t_flag->fl_z_before && t_flag->fl_point == 1
+		&& t_flag->fl_star > 1)
+		t_flag->space_b--;
 	if (t_flag->width > -1)
 	{
 		if (t_flag->fl_z_before > t_flag->width)
@@ -44,9 +43,6 @@ void	ft_update_space_b(t_printf *t_flag, int neg)
 
 void	ft_update_zero_b(t_printf *t_flag, int neg)
 {
-	// if (t_flag->space_b > t_flag->fl_z_before && t_flag->fl_point
-	// 	&& t_flag->fl_star)
-	// 	t_flag->fl_z_before++;
 	if (t_flag->width > -1)
 	{
 		if (t_flag->fl_z_before)
@@ -58,6 +54,12 @@ void	ft_update_zero_b(t_printf *t_flag, int neg)
 		t_flag->fl_z_before -= t_flag->size;
 	if (t_flag->width > t_flag->fl_z_before)
 		t_flag->fl_z_before = t_flag->width - t_flag->size + neg;
+	if (t_flag->space_b < t_flag->fl_z_before && t_flag->fl_star == 2
+		&& t_flag->fl_point && !t_flag->fl_min && !t_flag->width)
+	{
+		t_flag->fl_z_before = 1;
+		t_flag->scase = 1;
+	}
 }
 
 void	ft_update_space_a(t_printf *t_flag, int neg)

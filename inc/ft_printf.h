@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:54:43 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/15 19:55:02 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/17 20:26:38 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct	s_printf
 	int		fl_point;
 	int		pcent;
 	int		flag;
+	int		scase;
 }				t_printf;
 
 void			ft_specifier_s(va_list arg, int *res, t_printf *t_flag);
