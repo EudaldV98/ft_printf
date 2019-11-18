@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/07 20:06:09 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/15 19:42:39 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/18 16:46:12 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ void	ft_specifier_u(va_list aux, int *res, t_printf *t_flag)
 		return ;
 	ft_putnbr_u_fd(nb, 1);
 	*res += t_flag->size;
-	if (t_flag->space_a > 0)
-		ft_space(t_flag->space_a, 1, res, t_flag);
+	ft_space(t_flag->space_a, 1, res, t_flag);
 }

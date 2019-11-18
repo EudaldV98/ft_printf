@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:06:21 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/17 20:43:12 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/18 16:37:29 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	ft_update_space_b(t_printf *t_flag, int neg)
 {
-	if (t_flag->space_b > t_flag->fl_z_before && t_flag->fl_point == 1
-		&& t_flag->fl_star > 1)
-		t_flag->space_b--;
 	if (t_flag->width > -1)
 	{
 		if (t_flag->fl_z_before > t_flag->width)
@@ -54,12 +51,6 @@ void	ft_update_zero_b(t_printf *t_flag, int neg)
 		t_flag->fl_z_before -= t_flag->size;
 	if (t_flag->width > t_flag->fl_z_before)
 		t_flag->fl_z_before = t_flag->width - t_flag->size + neg;
-	if (t_flag->space_b < t_flag->fl_z_before && t_flag->fl_star == 2
-		&& t_flag->fl_point && !t_flag->fl_min && !t_flag->width)
-	{
-		t_flag->fl_z_before = 1;
-		t_flag->scase = 1;
-	}
 }
 
 void	ft_update_space_a(t_printf *t_flag, int neg)
@@ -68,16 +59,17 @@ void	ft_update_space_a(t_printf *t_flag, int neg)
 	{
 		if (t_flag->width > -1)
 		{
-			t_flag->space_a -= (t_flag->width + neg);
-			if (t_flag->width == 1)
-				t_flag->space_a -= 1;
+			if (t_flag->size > t_flag->width)
+				t_flag->space_a -= (t_flag->size);
+			else
+				t_flag->space_a -= (t_flag->width + neg);
 		}
 		else
 			t_flag->space_a -= t_flag->size;
 	}
 }
 
-void	ft_handle_exceptions(t_printf *t_flag, int type)
+void	ft_handle_exceptions(t_printf *t_flag, int type, int neg)
 {
 	if (t_flag->flag == 4 && t_flag->fl_z_before && t_flag->space_b < 0)
 	{
@@ -90,6 +82,9 @@ void	ft_handle_exceptions(t_printf *t_flag, int type)
 		t_flag->space_b = t_flag->fl_z_before;
 		t_flag->fl_z_before = 0;
 	}
+	if (t_flag->flag == 3 && t_flag->fl_star && t_flag->space_b > 0
+	&& neg)
+		t_flag->space_b--;
 	if (t_flag->flag == 5)
 		t_flag->space_b -= t_flag->space_a;
 	if (type == PADD)
@@ -113,5 +108,5 @@ void	ft_update_value(t_printf *t_flag, int neg, int type)
 	ft_update_space_b(t_flag, neg);
 	ft_update_zero_b(t_flag, neg);
 	ft_update_space_a(t_flag, neg);
-	ft_handle_exceptions(t_flag, type);
+	ft_handle_exceptions(t_flag, type, neg);
 }

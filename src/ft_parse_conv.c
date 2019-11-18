@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/31 12:59:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/17 20:27:28 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/18 16:45:22 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ t_printf	*ft_init_struct(void)
 	t_flag->size = -1;
 	t_flag->pcent = 0;
 	t_flag->flag = 0;
-	t_flag->scase = 0;
 	return (t_flag);
 }
 
