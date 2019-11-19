@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_specifier_u.c                                   :+:      :+:    :+:   */
+/*   ft_specifier_xp.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 15:49:10 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/19 16:05:57 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/11/01 15:04:05 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/19 16:11:55 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 #include "../libft/libft.h"
 
-t_count		ft_specifier_u(va_list aux, t_count cmp)
+t_count		ft_specifier_xp(va_list aux, t_count cmp, char c)
 {
-	long	nb;
+	long long	nb;
+	int			size;
 
-	nb = va_arg(aux, unsigned int);
-	if (nb < 0)
-		nb = nb + 4294967295;
-	cmp.str = ft_itoa((long)nb);
+	nb = (c == 'p') ? va_arg(aux, long long) : va_arg(aux, unsigned int);
+	size = ft_strlen_nb(nb, 16);
+	size = (c == 'p') ? size + 2 : size;
+	if (!(cmp.str = malloc(sizeof(char) * (size + 1))))
+	{
+		cmp.str = NULL;
+		return (cmp);
+	}
+	cmp.str[size] = '\0';
+	if (c == 'p')
+		cmp = ft_specifier_p(cmp, nb);
+	else
+		cmp = ft_specifier_x(cmp, nb, c);
 	return (cmp);
 }

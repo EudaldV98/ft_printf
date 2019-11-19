@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abourin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 10:29:29 by abourin           #+#    #+#             */
-/*   Updated: 2019/11/15 14:33:50 by jgrandne         ###   ########.fr       */
+/*   Updated: 2019/11/19 15:40:46 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
 
 	c = 'a';
 	t = 50;
-	printf("p0 % .3s\n", "cccc");
+	//printf("p0 % .3s\n", "cccc");
 	printf("pp %.50d\n", 10000);
 	printf("p1 %.4s\n", "cccc");
 	printf("p2 %.10s\n", "cccc");
@@ -119,8 +119,8 @@ int main(void)
 	printf("%d\n", printf("1chiffre 1 %d chiffre 2 %d\n", 42, -42));
 //	printf("%d\n", printf("2chiffre 1 %   d chiffre 2 % d\n", 42, -42));
 	printf("%d\n\n", printf("4chiffre 1 %-12d chiffre 2 %-12d\n\n", 42, -42));
-	printf("%    i\n", -60);
-    printf("%   i\n", -60);
+//	printf("%    i\n", -60);
+//  printf("%   i\n", -60);
   //  printf("%1p\n", &t);
    // printf("%1p\n", &t);
 	printf("t1 %050d\n", 10);
@@ -144,7 +144,7 @@ int main(void)
 	printf("1caractere 1 %c caractere 2 %c\n\n", 'a', 'c');
 //	printf("3caractere 1 %   c caractere 2 % c\n\n", 'a', 'c');
 	printf("%d\n\n", printf("1hexa-maj 1 %X hexa-maj 2 %X\n\n", 42, -42));
-	printf("%d\n\n", printf("3hexa-maj 1 %   X hexa-maj 2 % X\n\n", 42, -42));
+//	printf("%d\n\n", printf("3hexa-maj 1 %   X hexa-maj 2 % X\n\n", 42, -42));
 	printf("%d\n\n", printf("4hexa-maj 1 %12X hexa-maj 2 %int12X\n\n", 42, -42));
 	printf("%d\n\n", printf("4hexa-maj 1 %-12X hexa-maj 2 %-12X\n\n", 42, -42));
 	printf("%d\n\n", printf("5hexa-maj 1 %0X hexa-maj 2 %0X\n\n", 42, -42));
@@ -157,7 +157,7 @@ int main(void)
 //	printf("%d\n\n", printf("5pointeur 1 %0p pointeur 2 %0p\n\n", &c, &c));
 //	printf("%d\n\n", printf("6pointeur 1 %012p pointeur 2 %012p\n\n", &c, &c));
 	printf("%d\n\n", printf("1unsigned 1 %u unsigned 2 %u\n\n", 42, -42));
-	printf("%d\n\n", printf("3unsigned 1 %   u unsigned 2 % u\n\n", 42, -42));
+//	printf("%d\n\n", printf("3unsigned 1 %   u unsigned 2 % u\n\n", 42, -42));
 	printf("%d\n\n", printf("4unsigned 1 %12u unsigned 2 %12u\n\n", 42, -42));
 	printf("%d\n\n", printf("4unsigned 1 %-12u unsigned 2 %-12u\n\n", 42, -42));
 	printf("%d\n\n", printf("5unsigned 1 %0u unsigned 2 %0u\n\n", 42, -42));
@@ -213,10 +213,10 @@ int main(void)
 	printf("percent 2 %12%");
 	printf("percent 3 %-12%");
 	printf("percent 4 %0%");
-	printf("percent 5 % %");
-	printf("percent 6 % 15%");
-	printf("percent 7 % 12%");
-	printf("percent 8 %  *%", 13);
+//	printf("percent 5 % %");
+//	printf("percent 6 % 15%");
+//	printf("percent 7 % 12%");
+//	printf("percent 8 %  *%", 13);
 //	printf("%n", &t);
 	printf("%d\n", t);
 //	printf("%n", NULL);

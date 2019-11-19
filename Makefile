@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/11/09 19:58:57 by jvaquer           #+#    #+#              #
-#    Updated: 2019/11/11 20:16:52 by jvaquer          ###   ########.fr        #
+#    Created: 2019/11/09 15:04:31 by jvaquer           #+#    #+#              #
+#    Updated: 2019/11/19 16:00:22 by jvaquer          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,59 +21,46 @@ CPP_FLAGS = -Iinclude
 NAME = libftprintf.a
 
 SRC_PATH = ./src
+
 LIB_PATH = ./libft
+
 INC_PATH = ./inc
+
 OBJ_PATH = ./obj
-OBJLIB_PATH = ./obj
 
-SRC_NAME =	ft_printf.c \
-			ft_parse_conv.c \
-			ft_flag_m.c \
-			ft_flag_numbers.c \
-			ft_flag_p.c \
-			ft_flag_ptr.c \
-			ft_flag_zero.c\
-			ft_printf_update.c \
-			ft_printf_utils.c \
-			ft_specifier_c.c \
-			ft_specifier_d.c \
-			ft_specifier_mod.c \
-			ft_specifier_p.c \
-			ft_specifier_s.c \
-			ft_specifier_u.c \
-			ft_specifier_x.c
+OBJLIB_PATH = ./libft
 
-LIB_NAME = 	ft_atoi.c\
-			ft_putchar_fd.c \
-			ft_putstr_fd.c \
-			ft_strlen.c \
-			ft_putnbr_fd.c \
-			ft_putlng_fd.c \
-			ft_itoa.c \
-			ft_itoa_base.c \
-			ft_putnbr_u_fd.c \
-			ft_itoa_u.c \
-			ft_itoa_lng.c \
-			ft_isdigit.c \
-			ft_strlen_nb.c \
-			ft_strlen_lnb.c
+SRC_NAME =  ft_printf.c ft_printf_utils.c ft_specifier_c.c ft_specifier_d.c ft_flags.c \
+            ft_flags_2.c ft_exception.c ft_specifier_mod.c ft_specifier_p.c ft_specifier_s.c \
+			ft_specifier_u.c ft_specifier_x.c ft_specifier_xp.c
+
+LIB_NAME =  ft_atoi.c ft_substr.c ft_strlcpy.c \
+            ft_putchar_fd.c ft_strdup.c \
+            ft_putstr_fd.c ft_strncmp.c \
+            ft_strlen.c \
+            ft_itoa.c
 
 INC_NAME = ft_printf.h
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
+
 OBJLIB_NAME = $(LIB_NAME:.c=.o)
 
 SRC = $(addprefix $(SRC_PATH)/, $(SRC_NAME))
+
 LIB = $(addprefix $(LIB_PATH)/, $(LIB_NAME))
+
 INC = $(addprefix $(INC_PATH)/, $(INC_NAME))
+
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+
 OBJLIB = $(addprefix $(OBJLIB_PATH)/,$(OBJLIB_NAME))
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(OBJLIB) $(INC)
+$(NAME): $(OBJ)
 	@make -C libft
-	@ar rc $(NAME) $(OBJ) $(OBJLIB)
+	@ar rc $(NAME) $(OBJ) $(OBJLIB) libft/libft.a
 	@ranlib $(NAME)
 	@echo "__, ___      __, __, _ _, _ ___ __,"
 	@echo "|_   |       |_) |_) | |\ |  |  |_ "

@@ -5,70 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/31 12:54:43 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/18 16:37:16 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/11/19 15:17:03 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/19 16:48:36 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
 # include <stdlib.h>
-# include <unistd.h>
 # include <stdarg.h>
-# include "../libft/libft.h"
+# include <unistd.h>
 
-# define CAP "0123456789ABCDEF"
-# define MIN "0123456789abcdef"
-# define NUMB 0
-# define ADDR 1
-# define CHAR 2
-# define PADD 3
+# define UMAX 4294967295
 
-typedef struct	s_printf
+typedef struct	s_count
 {
-	int		fl_min;
-	int		space_b;
-	int		space_a;
-	int		fl_z;
-	int		fl_z_before;
-	int		fl_star;
-	int		width;
-	int		conv;
-	int		size;
-	int		fl_point;
-	int		pcent;
-	int		flag;
-}				t_printf;
+	int				i;
+	int				len;
+	int				space;
+	long			zero;
+	int				check;
+	char			*str;
+}				t_count;
 
-void			ft_specifier_s(va_list arg, int *res, t_printf *t_flag);
-void			ft_specifier_c(va_list arg, int *res, t_printf *t_flag);
-int				ft_printf(const char *format, ...);
-t_printf		*ft_init_struct(void);
-int				ft_is_flag(char c, t_printf *t_flag, int *i);
-void			ft_parse_conv(int *i, const char *str, va_list arg, int *res);
-void			ft_update_value(t_printf *t_flag, int neg, int type);
-void			ft_handle_exceptions(t_printf *t_flag, int type, int neg);
-void			ft_out(char *str, int *res, t_printf *t_flag);
-void			ft_space(int nb, int cas, int *res, t_printf *t_flag);
-void			ft_handle_spaces(int *res, t_printf *t_flag, int size, int neg);
-void			ft_update_zerobefore(t_printf *t_flag, int neg);
+int				ft_strlen_nb(long nb, int base);
+t_count			ft_init_count(t_count init, int k);
+int				ft_convertible(char c);
+void			ft_strdel(char **s);
 
-void			ft_specifier_c(va_list arg, int *res, t_printf *t_flag);
-void			ft_specifier_d(va_list arg, int *res, t_printf *t_flag);
-void			ft_specifier_s(va_list arg, int *res, t_printf *t_flag);
-void			ft_specifier_u(va_list arg, int *res, t_printf *t_flag);
-void			ft_specifier_p(va_list arg, int *res, t_printf *t_flag);
-void			ft_specifier_x(va_list arg, int *res, t_printf *t_flag);
-void			ft_specifier_xmaj(va_list aux, int *res, t_printf *t_flag);
-int				ft_nb_exception(long long nb, int *res, t_printf *t_flag);
-void			ft_specifier_mod(int *res, t_printf *t_flag);
-int				ft_x_exception(long long ptr, int *res, t_printf *t_flag);
+t_count			ft_specifier_d(va_list aux, t_count cmp);
+t_count			ft_specifier_u(va_list aux, t_count cmp);
+t_count			ft_specifier_c(va_list aux, t_count cmp);
+t_count			ft_specifier_s(va_list aux, t_count cmp);
+t_count			ft_specifier_mod(va_list au, t_count cmp);
+t_count			ft_specifier_xp(va_list aux, t_count cmp, char c);
+t_count			ft_specifier_p(t_count cmp, long long nb);
+t_count			ft_specifier_x(t_count cmp, long long nb, char c);
 
-void			ft_flag_zero(int *res, t_printf *t_flag, int *i);
-void			ft_flag_m(int *res, t_printf *t_flag, char *str, int *i);
-void			ft_flag_p(int *res, t_printf *t_flag, char *str, int *i);
-void			ft_flag_ptr(va_list arg, int *i, t_printf *t_flag, char *str);
-void			ft_flag_numbers(char *str, t_printf *t_flag, int *i);
+t_count			ft_flag_z(va_list aux, t_count cmp, const char *s);
+t_count			ft_flag_p(va_list aux, t_count cmp, const char *s);
+t_count			ft_flag_m(va_list aux, t_count cmp, char *s);
+t_count			ft_flag_nb(va_list aux, t_count cmp, char *s);
+t_count			ft_flag_ptr(va_list aux, const char *s, t_count cmp);
+t_count			ft_flags(va_list aux, t_count cmp, char c, char *s);
+t_count			ft_switch_flag(va_list aux, t_count cmp, const char *s);
+
+t_count			ft_print_front_flag(t_count cmp, int neg, char *s);
+t_count			ft_print_back_flag(t_count cmp, int neg);
+t_count			ft_print_arg(t_count cmp, char *s);
+t_count			ft_check(va_list aux, const char *s, t_count cmp);
+int				ft_printf(const char *str, ...);
+
+t_count			ft_check_null_str(t_count cmp, char *s);
+t_count			ft_except_p(t_count cmp, char *s);
+t_count			ft_reduc_str(t_count cmp, char *s);
 
 #endif

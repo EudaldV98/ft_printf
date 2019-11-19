@@ -6,7 +6,7 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 20:35:12 by nicolas           #+#    #+#             */
-/*   Updated: 2019/11/14 18:30:58 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/19 16:31:12 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -646,8 +646,8 @@ int main(){
 	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 21 => \033[0m|%.5d|", -42));
 	printf("{%d}\n", printf("\033[1;32mTest 22 => \033[0m|%-.5d|", -42));
 	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 22 => \033[0m|%-.5d|", -42));
-	printf("{%d}\n", printf("\033[1;32mTest 23 => \033[0m|% .5d|", -42));
-	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 23 => \033[0m|% .5d|", -42));
+	// printf("{%d}\n", printf("\033[1;32mTest 23 => \033[0m|% .5d|", -42));
+	// ft_printf("{%d}\n", ft_printf("\033[1;31mTest 23 => \033[0m|% .5d|", -42));
 //	printf("{%d}\n", printf("\033[1;32mTest 24 => \033[0m|%+.5d|", -42));
 //	ft_printf("{%d}\n", ft_printf("\033[1;31mTest 24 => \033[0m|%+.5d|", -42));
 	printf("{%d}\n", printf("\033[1;32mTest 25 => \033[0m|%d|", 0));

@@ -1,4 +1,3 @@
-p0 ccc
 pp 00000000000000000000000000000000000000000000010000
 p1 cccc
 p2 cccc
@@ -94,8 +93,6 @@ a         ty                                                Co                  
 
 48
 
--60
--60
 t1 00000000000000000000000000000000000000000000000010
 t2 10                                                
 t3                                                 10
@@ -135,10 +132,6 @@ t14       1000
 
 36
 
-3hexa-maj 1 2A hexa-maj 2 FFFFFFD6
-
-36
-
 4hexa-maj 1           2A hexa-maj 2 -42nt12X
 
 46
@@ -160,10 +153,6 @@ t14       1000
 74
 
 1unsigned 1 42 unsigned 2 4294967254
-
-38
-
-3unsigned 1 42 unsigned 2 4294967254
 
 38
 
@@ -208,7 +197,7 @@ bonjour !
 
 32 This is an int : 0
 
-percent 1 00000000000%percent 2            %percent 3 %           percent 4 %percent 5 %percent 6               %percent 7            %percent 8             %50
+percent 1 00000000000%percent 2            %percent 3 %           percent 4 %50
 50
 50
 50

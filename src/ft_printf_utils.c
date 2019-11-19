@@ -5,50 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/07 15:41:49 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/17 19:54:22 by jvaquer          ###   ########.fr       */
+/*   Created: 2019/11/01 15:02:56 by jvaquer           #+#    #+#             */
+/*   Updated: 2019/11/19 15:13:29 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
+#include "../libft/libft.h"
 
-void	ft_out(char *str, int *res, t_printf *t_flag)
+int			ft_strlen_nb(long nb, int base)
 {
-	int i;
-	int width;
+	int		len;
 
-	i = 0;
-	width = t_flag->width;
-	while (width != 0 && str[i])
+	if (nb == 0)
+		return (1);
+	len = (nb < 0) ? 1 : 0;
+	nb = (nb < 0) ? -nb : nb;
+	while (nb >= 1)
 	{
-		ft_putchar_fd(str[i], 1);
-		*res += 1;
-		width--;
-		i++;
+		nb /= base;
+		len++;
 	}
+	return (len);
 }
 
-void	ft_space(int nb, int cas, int *res, t_printf *t_flag)
+int			ft_convertible(char c)
 {
-	while (nb > 0)
-	{
-		if (cas)
-			ft_putchar_fd(' ', 1);
-		else
-			ft_putchar_fd('0', 1);
-		*res += 1;
-		nb--;
-	}
+	if (c == 'd' || c == 'i' || c == 'c' || c == 's' || c == 'p' || c == 'x' ||
+	c == 'X' || c == 'u' || c == '%')
+		return (1);
+	return (0);
 }
 
-void	ft_handle_spaces(int *res, t_printf *t_flag, int size, int neg)
+t_count		ft_init_count(t_count init, int k)
 {
-	if (t_flag->space_b)
-		ft_space(t_flag->space_b, 1, res, t_flag);
-	if (neg)
-		write(1, "-", 1);
-	else if (t_flag->flag == 7)
-		write(1, "0x", 2);
-	if (t_flag->fl_z_before)
-		ft_space(t_flag->fl_z_before, 0, res, t_flag);
+	if (k != 1)
+	{
+		init.i = 0;
+		init.len = 0;
+		init.str = NULL;
+	}
+	init.zero = -4294967295;
+	init.space = 0;
+	init.check = 0;
+	return (init);
+}
+
+void		ft_strdel(char **s)
+{
+	if (s != NULL)
+	{
+		free(*s);
+		*s = NULL;
+	}
 }

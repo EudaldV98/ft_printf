@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: abourin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 10:29:29 by abourin           #+#    #+#             */
-/*   Updated: 2019/11/15 14:33:50 by jgrandne         ###   ########.fr       */
+/*   Updated: 2019/11/19 15:40:46 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
 
 	c = 'a';
 	t = 50;
-	ft_printf("p0 % .3s\n", "cccc");
+	//ft_printf("p0 % .3s\n", "cccc");
 	ft_printf("pp %.50d\n", 10000);
 	ft_printf("p1 %.4s\n", "cccc");
 	ft_printf("p2 %.10s\n", "cccc");
@@ -119,8 +119,8 @@ int main(void)
 	ft_printf("%d\n", ft_printf("1chiffre 1 %d chiffre 2 %d\n", 42, -42));
 //	ft_printf("%d\n", ft_printf("2chiffre 1 %   d chiffre 2 % d\n", 42, -42));
 	ft_printf("%d\n\n", ft_printf("4chiffre 1 %-12d chiffre 2 %-12d\n\n", 42, -42));
-	ft_printf("%    i\n", -60);
-    ft_printf("%   i\n", -60);
+//	ft_printf("%    i\n", -60);
+//  ft_printf("%   i\n", -60);
   //  ft_printf("%1p\n", &t);
    // ft_printf("%1p\n", &t);
 	ft_printf("t1 %050d\n", 10);
@@ -144,7 +144,7 @@ int main(void)
 	ft_printf("1caractere 1 %c caractere 2 %c\n\n", 'a', 'c');
 //	ft_printf("3caractere 1 %   c caractere 2 % c\n\n", 'a', 'c');
 	ft_printf("%d\n\n", ft_printf("1hexa-maj 1 %X hexa-maj 2 %X\n\n", 42, -42));
-	ft_printf("%d\n\n", ft_printf("3hexa-maj 1 %   X hexa-maj 2 % X\n\n", 42, -42));
+//	ft_printf("%d\n\n", ft_printf("3hexa-maj 1 %   X hexa-maj 2 % X\n\n", 42, -42));
 	ft_printf("%d\n\n", ft_printf("4hexa-maj 1 %12X hexa-maj 2 %int12X\n\n", 42, -42));
 	ft_printf("%d\n\n", ft_printf("4hexa-maj 1 %-12X hexa-maj 2 %-12X\n\n", 42, -42));
 	ft_printf("%d\n\n", ft_printf("5hexa-maj 1 %0X hexa-maj 2 %0X\n\n", 42, -42));
@@ -157,7 +157,7 @@ int main(void)
 //	ft_printf("%d\n\n", ft_printf("5pointeur 1 %0p pointeur 2 %0p\n\n", &c, &c));
 //	ft_printf("%d\n\n", ft_printf("6pointeur 1 %012p pointeur 2 %012p\n\n", &c, &c));
 	ft_printf("%d\n\n", ft_printf("1unsigned 1 %u unsigned 2 %u\n\n", 42, -42));
-	ft_printf("%d\n\n", ft_printf("3unsigned 1 %   u unsigned 2 % u\n\n", 42, -42));
+//	ft_printf("%d\n\n", ft_printf("3unsigned 1 %   u unsigned 2 % u\n\n", 42, -42));
 	ft_printf("%d\n\n", ft_printf("4unsigned 1 %12u unsigned 2 %12u\n\n", 42, -42));
 	ft_printf("%d\n\n", ft_printf("4unsigned 1 %-12u unsigned 2 %-12u\n\n", 42, -42));
 	ft_printf("%d\n\n", ft_printf("5unsigned 1 %0u unsigned 2 %0u\n\n", 42, -42));
@@ -213,10 +213,10 @@ int main(void)
 	ft_printf("percent 2 %12%");
 	ft_printf("percent 3 %-12%");
 	ft_printf("percent 4 %0%");
-	ft_printf("percent 5 % %");
-	ft_printf("percent 6 % 15%");
-	ft_printf("percent 7 % 12%");
-	ft_printf("percent 8 %  *%", 13);
+//	ft_printf("percent 5 % %");
+//	ft_printf("percent 6 % 15%");
+//	ft_printf("percent 7 % 12%");
+//	ft_printf("percent 8 %  *%", 13);
 //	ft_printf("%n", &t);
 	ft_printf("%d\n", t);
 //	ft_printf("%n", NULL);
