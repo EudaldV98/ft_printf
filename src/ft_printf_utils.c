@@ -6,20 +6,12 @@
 /*   By: jvaquer <jvaquer@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 15:02:56 by jvaquer           #+#    #+#             */
-/*   Updated: 2019/11/22 15:48:44 by jvaquer          ###   ########.fr       */
+/*   Updated: 2019/11/19 15:13:29 by jvaquer          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ft_printf.h"
 #include "../libft/libft.h"
-
-int			ft_convertible(char c)
-{
-	if (c == 'd' || c == 'i' || c == 'c' || c == 's' || c == 'p' || c == 'x' ||
-	c == 'X' || c == 'u' || c == '%')
-		return (1);
-	return (0);
-}
 
 int			ft_strlen_nb(long nb, int base)
 {
@@ -35,6 +27,14 @@ int			ft_strlen_nb(long nb, int base)
 		len++;
 	}
 	return (len);
+}
+
+int			ft_convertible(char c)
+{
+	if (c == 'd' || c == 'i' || c == 'c' || c == 's' || c == 'p' || c == 'x' ||
+	c == 'X' || c == 'u' || c == '%')
+		return (1);
+	return (0);
 }
 
 t_count		ft_init_count(t_count init, int k)
